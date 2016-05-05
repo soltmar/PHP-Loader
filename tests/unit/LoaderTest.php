@@ -10,6 +10,11 @@ class LoaderTest extends \Securetrading\Unittest\UnittestAbstract {
     $this->assertNotEquals(false, $this->_expectedRootPath);
   }
 
+  public function tearDown() {
+    Loader::unregisterAutoloaderPaths(Loader::getAutoloaderPaths());
+    Loader::unregisterAutoloader();
+  }
+
   /**
    *
    */
@@ -66,6 +71,8 @@ class LoaderTest extends \Securetrading\Unittest\UnittestAbstract {
     $this->assertEquals($initialCount + 1, count(spl_autoload_functions())); // Assert that it cannot be registered twice.
     Loader::unRegisterAutoloader();
     $this->assertEquals($initialCount, count(spl_autoload_functions()));
+    Loader::registerAutoloader();
+    $this->assertEquals($initialCount + 1, count(spl_autoload_functions())); // Assert that it can be re-registered.
   }
 
   /**

@@ -5,6 +5,11 @@ namespace Securetrading\Loader\Tests\Integration;
 use \Securetrading\Loader\Loader as Loader;
 
 class LoaderTest extends \Securetrading\Unittest\IntegrationtestAbstract {
+  public function tearDown() {
+    Loader::unregisterAutoloaderPaths(Loader::getAutoloaderPaths());
+    Loader::unregisterAutoloader();
+  }
+
   /**
    *
    */

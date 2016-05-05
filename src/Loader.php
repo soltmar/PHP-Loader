@@ -61,6 +61,7 @@ class Loader {
 
   public static function unregisterAutoloader() {
     spl_autoload_unregister(array('static', '_autoload'));
+    static::$_init = false;
   }
 
   public static function createPsr0FilePath($className) {

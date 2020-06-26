@@ -5,7 +5,7 @@ namespace Securetrading\Loader\Tests\Unit;
 use \Securetrading\Loader\Loader as Loader;
 
 class LoaderTest extends \Securetrading\Unittest\UnittestAbstract {
-  public function setUp() {
+  public function setUp() : void {
     $this->_expectedRootPath = realpath(__DIR__ . '/../../../') . '/';
     $this->assertNotEquals(false, $this->_expectedRootPath);
   }
